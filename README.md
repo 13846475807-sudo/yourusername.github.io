@@ -1,1 +1,1693 @@
 # yourusername.github.io
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李明 | 产品经理候选人</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Modern Sans Serif Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#333333',
+                        secondary: '#666666',
+                        accent: '#999999',
+                        light: '#f8f5f0',
+                        dark: '#333333',
+                        gray: {
+                            100: '#f8f5f0',
+                            200: '#efe9e0',
+                            300: '#e5ddd0',
+                            400: '#d9cebc',
+                            500: '#c4b5a0',
+                            600: '#9e8d78',
+                            700: '#7d6b57',
+                            800: '#5c4e3f',
+                            900: '#3b3228'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        'hover': '0 10px 30px rgba(0, 0, 0, 0.15)'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-in-out',
+                        'slide-down': 'slideDown 0.5s ease-in-out',
+                        'slide-left': 'slideLeft 0.5s ease-in-out',
+                        'slide-right': 'slideRight 0.5s ease-in-out',
+                        'pulse-slow': 'pulse 3s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+            .section-padding {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+            .nav-link {
+                position: relative;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 1px;
+                bottom: -4px;
+                left: 0;
+                background-color: #333333;
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+            .btn-primary {
+                background-color: transparent;
+                color: #333333;
+                padding: 0.75rem 1.5rem;
+                border: 1px solid #333333;
+                border-radius: 0;
+                font-weight: 400;
+                transition: all 0.3s ease;
+                letter-spacing: 1px;
+            }
+            .btn-primary:hover {
+                background-color: #333333;
+                color: #f8f5f0;
+                transform: translateY(-2px);
+            }
+            .btn-secondary {
+                background-color: #333333;
+                color: #f8f5f0;
+                padding: 0.75rem 1.5rem;
+                border: 1px solid #333333;
+                border-radius: 0;
+                font-weight: 400;
+                transition: all 0.3s ease;
+                letter-spacing: 1px;
+            }
+            .btn-secondary:hover {
+                background-color: transparent;
+                color: #333333;
+                transform: translateY(-2px);
+            }
+            .progress-bar {
+                height: 4px;
+                background-color: #e5ddd0;
+                overflow: hidden;
+            }
+            .progress-bar-fill {
+                height: 100%;
+                background-color: #333333;
+                transition: width 1s ease-in-out;
+            }
+            .timeline-item {
+                position: relative;
+                padding-left: 30px;
+                margin-bottom: 2rem;
+            }
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 1px;
+                background-color: #333333;
+            }
+            .timeline-item::after {
+                content: '';
+                position: absolute;
+                left: -3px;
+                top: 0;
+                height: 7px;
+                width: 7px;
+                border-radius: 50%;
+                background-color: #333333;
+            }
+            .project-card {
+                border: 1px solid #e5ddd0;
+                border-radius: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                background: #f8f5f0;
+            }
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            .project-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                transition: all 0.3s ease;
+                filter: grayscale(30%);
+            }
+            .project-card:hover img {
+                filter: grayscale(0%);
+            }
+            .ai-tool-card {
+                border: 1px solid #e5ddd0;
+                border-radius: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                background: #f8f5f0;
+            }
+            .ai-tool-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            .social-icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border: 1px solid #333333;
+                border-radius: 0;
+                background-color: transparent;
+                color: #333333;
+                margin-right: 10px;
+                transition: all 0.3s ease;
+            }
+            .social-icon:hover {
+                background-color: #333333;
+                color: #f8f5f0;
+                transform: translateY(-2px);
+            }
+            .mobile-menu {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+            .border-l-custom {
+                border-left: 1px solid #e5ddd0;
+            }
+            .border-r-custom {
+                border-right: 1px solid #e5ddd0;
+            }
+            .border-t-custom {
+                border-top: 1px solid #e5ddd0;
+            }
+            .border-b-custom {
+                border-bottom: 1px solid #e5ddd0;
+            }
+            .language-selector {
+                position: relative;
+                cursor: pointer;
+            }
+            .language-dropdown {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #f8f5f0;
+                border: 1px solid #e5ddd0;
+                padding: 0.5rem 0;
+                min-width: 80px;
+                z-index: 100;
+                display: none;
+            }
+            .language-selector:hover .language-dropdown {
+                display: block;
+            }
+            .language-option {
+                padding: 0.5rem 1rem;
+                transition: all 0.2s ease;
+            }
+            .language-option:hover {
+                background: #e5ddd0;
+            }
+            @media (max-width: 768px) {
+                .section-padding {
+                    padding-top: 3rem;
+                    padding-bottom: 3rem;
+                }
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 w-full bg-light bg-opacity-95 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-light tracking-wider text-primary">Wangshuai<span class="text-secondary">.PM</span></a>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex items-center space-x-12">
+                <a href="#about" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider" data-lang="zh">关于我</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider hidden" data-lang="en">About</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider" data-lang="zh">技能</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider hidden" data-lang="en">Skills</a>
+                <a href="#portfolio" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider" data-lang="zh">作品集</a>
+                <a href="#portfolio" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider hidden" data-lang="en">Portfolio</a>
+                <a href="#ai-project" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider" data-lang="zh">AI项目</a>
+                <a href="#ai-project" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider hidden" data-lang="en">AI Project</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider" data-lang="zh">联系我</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition-all-300 text-sm uppercase tracking-wider hidden" data-lang="en">Contact</a>
+                
+                <!-- 语言选择器 -->
+                <div class="language-selector ml-8">
+                    <div class="flex items-center text-sm uppercase tracking-wider">
+                        <span id="current-language" data-lang="zh">中文</span>
+                        <i class="fa fa-chevron-down ml-2 text-xs"></i>
+                    </div>
+                    <div class="language-dropdown">
+                        <div class="language-option" data-lang="zh">中文</div>
+                        <div class="language-option" data-lang="en">English</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button class="md:hidden text-gray-700 focus:outline-none" id="menu-toggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-light z-50 p-5" id="mobile-menu">
+            <div class="flex justify-between items-center mb-8">
+                <a href="#" class="text-2xl font-light tracking-wider text-primary">Wangshuai<span class="text-secondary">.PM</span></a>
+                <button class="text-gray-700 focus:outline-none" id="close-menu">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider" data-lang="zh">关于我</a>
+                <a href="#about" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider hidden" data-lang="en">About</a>
+                <a href="#skills" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider" data-lang="zh">技能</a>
+                <a href="#skills" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider hidden" data-lang="en">Skills</a>
+                <a href="#portfolio" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider" data-lang="zh">作品集</a>
+                <a href="#portfolio" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider hidden" data-lang="en">Portfolio</a>
+                <a href="#ai-project" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider" data-lang="zh">AI项目</a>
+                <a href="#ai-project" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider hidden" data-lang="en">AI Project</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider" data-lang="zh">联系我</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition-all-300 py-2 border-b border-gray-200 text-sm uppercase tracking-wider hidden" data-lang="en">Contact</a>
+                
+                <!-- 移动端语言选择 -->
+                <div class="pt-4 border-t border-gray-200">
+                    <p class="text-sm uppercase tracking-wider mb-2" data-lang="zh">语言 / Language</p>
+                    <div class="flex space-x-4">
+                        <button class="language-option px-3 py-1 border border-gray-300 text-sm" data-lang="zh">中文</button>
+                        <button class="language-option px-3 py-1 border border-gray-300 text-sm" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 遮罩层 -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" id="overlay"></div>
+    
+    <!-- Hero区域 -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden" id="hero">
+        <div class="absolute inset-0 z-0">
+            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/2494b2f1dfbe4dc88dc97088d8560ce1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=202602122317522CBAE6FE2E9FDC3DD837&amp;rrcfp=f06b921b&amp;x-expires=1773501489&amp;x-signature=9H3iwA%2FAwtTnyn9UYaDqpW8hxVc%3D" alt="雪花背景" class="w-full h-full object-cover opacity-30">
+        </div>
+        
+        <div class="container mx-auto px-4 z-20">
+            <div class="max-w-4xl mx-auto py-16 px-6 md:px-12 text-center">
+                <h1 class="text-5xl md:text-7xl font-medium italic text-[#88d4e0] mb-4 hidden" data-aos="fade-up" data-lang="en" style="text-decoration: none; font-weight: bold;">Hi, I'm Wangshuai</h1>
+                <h1 class="text-5xl md:text-7xl font-medium italic text-[#88d4e0] mb-4" data-aos="fade-up" data-lang="zh">Hi, 我是王帅</h1>
+                <h2 class="text-xl md:text-2xl font-medium text-[#88d4e0] mb-6 hidden" data-aos="fade-up" data-aos-delay="100" data-lang="en">Junior PM</h2>
+                <h2 class="text-xl md:text-2xl font-medium text-[#88d4e0] mb-6" data-aos="fade-up" data-aos-delay="100" data-lang="zh">一名AI产品经理</h2>
+                <p class="text-sm md:text-base text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed hidden" data-aos="fade-up" data-aos-delay="200" data-lang="en">
+                    Building bridges across Languages, Culture, Dream and Reality through Creativity, Empathy and AI.
+                </p>
+                <p class="text-sm md:text-base text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200" data-lang="zh">
+                    通过创造力、同理心和人工智能，搭建语言、文化、梦想与现实之间的桥梁。
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-6" data-aos="fade-up" data-aos-delay="300">
+                    <a href="#about" class="btn-primary uppercase tracking-wider text-sm text-[#52c8d8] border-[#52c8d8] hover:bg-[#52c8d8] hover:text-light hidden" data-lang="en">Learn More</a>
+                    <a href="#about" class="btn-primary uppercase tracking-wider text-sm text-[#52c8d8] border-[#52c8d8] hover:bg-[#52c8d8] hover:text-light" data-lang="zh">了解更多</a>
+                    <a href="#contact" class="btn-secondary uppercase tracking-wider text-sm bg-[#52c8d8] text-light hover:bg-transparent hover:text-[#52c8d8] border-[#52c8d8] hidden" data-lang="en">Contact</a>
+                    <a href="#contact" class="btn-secondary uppercase tracking-wider text-sm bg-[#52c8d8] text-light hover:bg-transparent hover:text-[#52c8d8] border-[#52c8d8]" data-lang="zh">联系我</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <a href="#about" class="text-[#52c8d8]">
+                <i class="fa fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- 关于我 -->
+    <section class="section-padding bg-white" id="about">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">关于我</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    我是一位充满激情的产品经理候选人，致力于将商业愿景转化为用户喜爱的产品体验。
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                <div class="w-full md:w-1/3" data-aos="fade-right">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-full h-full border-2 border-primary rounded-lg"></div>
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/06c142bb65bb4b858f60e1dab51d078a.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&amp;rcl=20260212224941D3889152E7495B2F1FFA&amp;rrcfp=8a172a1a&amp;x-expires=1771512581&amp;x-signature=Hprwwm0B1Mloispnf04ZFtuArM8%3D" alt="李明" class="w-full h-auto rounded-lg shadow-custom relative z-10">
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-2/3" data-aos="fade-left" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold mb-4">商业闭环与AI效率专家</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        作为一名211本硕毕业生，我拥有扎实的学术背景和出色的英语能力（专业八级、雅思7.5）。我的跨国沟通经验和海外经历使我具备了全球化视野和跨文化协作能力。
+                    </p>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        我对产品经理岗位充满热情，特别专注于商业闭环的设计与执行。我相信产品不仅要解决用户问题，更要为企业创造可持续的商业价值。同时，我积极探索AI工具在产品开发和工作效率提升中的应用，致力于打造更智能、更高效的产品体验。
+                    </p>
+                    <p class="text-gray-700 mb-8 leading-relaxed">
+                        在自媒体运营方面，我成功建立了拥有1.5万粉丝的个人账号，并创造过多篇爆款内容，展现了我对用户需求的深刻理解和内容创作能力。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <h4 class="text-3xl font-bold text-primary mb-2">211</h4>
+                            <p class="text-gray-600">本硕背景</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <h4 class="text-3xl font-bold text-primary mb-2">7.5</h4>
+                            <p class="text-gray-600">雅思分数</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <h4 class="text-3xl font-bold text-primary mb-2">15K</h4>
+                            <p class="text-gray-600">社媒粉丝</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <h4 class="text-3xl font-bold text-primary mb-2">2025</h4>
+                            <p class="text-gray-600">毕业年份</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 技能 -->
+    <section class="section-padding bg-gray-100" id="skills">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">我的技能</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    我具备全面的产品经理核心能力，同时拥有独特的语言优势和AI工具应用经验。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 核心技能 -->
+                <div class="bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-star text-secondary mr-2"></i>
+                        核心技能
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">产品思维</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">商业闭环设计</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">用户研究</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">数据分析</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">项目管理</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 语言与AI技能 -->
+                <div class="bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-code text-secondary mr-2"></i>
+                        语言与AI技能
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">英语（专业八级）</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">跨国沟通</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">AI工具应用</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">自媒体运营</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">内容创作</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 证书与成就 -->
+            <div class="mt-12 bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <i class="fa fa-trophy text-secondary mr-2"></i>
+                    证书与成就
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-lg">英语专业八级证书</h4>
+                        <p class="text-gray-600">2023年</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-lg">雅思7.5分</h4>
+                        <p class="text-gray-600">2025年</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-lg">自媒体账号1.5万粉丝</h4>
+                        <p class="text-gray-600">2024年至今</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-lg">产品经理培训证书</h4>
+                        <p class="text-gray-600">2024年</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-lg">AI工具应用工作坊证书</h4>
+                        <p class="text-gray-600">2024年</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-lg">211硕士学位</h4>
+                        <p class="text-gray-600">2025年</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 作品集 -->
+    <section class="section-padding bg-gray-100" id="portfolio">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">作品集</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    我的项目经验涵盖自媒体运营、跨国沟通和产品设计，展示了我在商业闭环和用户体验方面的能力。
+                </p>
+            </div>
+            
+            <!-- 作品集筛选 -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="300">
+                <button class="filter-btn active px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition-all-300" data-filter="all">全部</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all-300" data-filter="social">自媒体</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all-300" data-filter="product">产品设计</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all-300" data-filter="ai">AI应用</button>
+            </div>
+            
+            <!-- 作品集网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 项目1 -->
+                <div class="project-card" data-category="social" data-aos="fade-up">
+                    <div class="overflow-hidden">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9f3e9b205293441a960ef94d80d420e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260212224855380ECAE24EBCD838AB5C&amp;rrcfp=f06b921b&amp;x-expires=1773499758&amp;x-signature=h9cXGqVj04gk4ic946gIMdQ8JmQ%3D" alt="自媒体运营" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">自媒体账号运营</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">自媒体</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            从零开始打造个人自媒体账号，实现1.5万粉丝增长，并创造多篇爆款内容，展现了对用户需求的深刻理解和内容创作能力。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">2022年至今</span>
+                            <button class="view-project text-primary hover:text-primary/80 transition-all-300" data-id="1">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="project-card" data-category="product" data-aos="fade-up" data-aos-delay="100">
+                    <div class="overflow-hidden">
+                        <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/a96240b9000d4b848ea82835772b7769~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260212224855380ECAE24EBCD838AB5C&amp;rrcfp=f06b921b&amp;x-expires=1773499755&amp;x-signature=xLeLACZ7fk%2B%2F2xtnY%2BsMui79qUo%3D" alt="产品设计" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">跨境电商产品规划</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">产品设计</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            参与跨境电商平台的产品规划与设计，负责用户调研、需求分析和功能设计，推动产品从0到1的全过程。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">2023年</span>
+                            <button class="view-project text-primary hover:text-primary/80 transition-all-300" data-id="2">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="200">
+                    <div class="overflow-hidden">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/80b71cf194fe44e6ab823c09836f90cc~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260212224855380ECAE24EBCD838AB5C&amp;rrcfp=f06b921b&amp;x-expires=1773499755&amp;x-signature=xARoe3wrT1Y9ABukxZyRcI0EcrA%3D" alt="AI应用" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">AI辅助内容创作工具</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">AI应用</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            开发并应用AI辅助内容创作工具，提高内容生产效率30%，同时保持内容质量和原创性，实现内容创作的规模化。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">2024年</span>
+                            <button class="view-project text-primary hover:text-primary/80 transition-all-300" data-id="3">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目4 -->
+                <div class="project-card" data-category="social" data-aos="fade-up">
+                    <div class="overflow-hidden">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9f3e9b205293441a960ef94d80d420e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260212224855380ECAE24EBCD838AB5C&amp;rrcfp=f06b921b&amp;x-expires=1773499758&amp;x-signature=h9cXGqVj04gk4ic946gIMdQ8JmQ%3D" alt="社媒爆款" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">爆款内容策划</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">自媒体</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            策划并执行多篇爆款内容，单篇内容最高获得10万+阅读量和5000+互动，成功打造个人品牌影响力。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">2023年</span>
+                            <button class="view-project text-primary hover:text-primary/80 transition-all-300" data-id="4">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目5 -->
+                <div class="project-card" data-category="product" data-aos="fade-up" data-aos-delay="100">
+                    <div class="overflow-hidden">
+                        <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/a96240b9000d4b848ea82835772b7769~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260212224855380ECAE24EBCD838AB5C&amp;rrcfp=f06b921b&amp;x-expires=1773499755&amp;x-signature=xLeLACZ7fk%2B%2F2xtnY%2BsMui79qUo%3D" alt="用户研究" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">用户研究与洞察报告</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">产品设计</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            主导跨国用户研究项目，通过问卷调查、深度访谈和数据分析，产出详细的用户洞察报告，为产品决策提供依据。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">2023年</span>
+                            <button class="view-project text-primary hover:text-primary/80 transition-all-300" data-id="5">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目6 -->
+                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="200">
+                    <div class="overflow-hidden">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/80b71cf194fe44e6ab823c09836f90cc~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260212224855380ECAE24EBCD838AB5C&amp;rrcfp=f06b921b&amp;x-expires=1773499755&amp;x-signature=xARoe3wrT1Y9ABukxZyRcI0EcrA%3D" alt="AI效率工具" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">AI效率提升工作流</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">AI应用</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            设计并实施AI辅助工作流，将日常工作效率提升40%，包括自动数据分析、报告生成和会议记录等功能。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">2024年</span>
+                            <button class="view-project text-primary hover:text-primary/80 transition-all-300" data-id="6">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI项目 -->
+    <section class="section-padding bg-white" id="ai-project">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">AI小项目</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    这是我在两天内完成的AI小项目，展示了我对AI工具的应用能力和产品思维，可作为简历亮点。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- AI产品需求助手 -->
+                <div class="bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                            <i class="fa fa-lightbulb-o text-2xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">AI产品需求助手</h3>
+                            <p class="text-gray-600">
+                                一款帮助产品经理快速生成和优化产品需求文档的AI工具，结合了自然语言处理和产品管理最佳实践。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-bold mb-3">核心功能：</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>需求文档自动生成与优化</li>
+                            <li>用户故事和场景分析</li>
+                            <li>竞品分析和市场趋势洞察</li>
+                            <li>产品路线图规划辅助</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-bold mb-3">技术实现：</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">HTML/CSS/JavaScript</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">OpenAI API</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Chart.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 text-sm">开发时间：2天</span>
+                        <button class="btn-primary" id="demo-ai-tool">查看演示</button>
+                    </div>
+                </div>
+                
+                <!-- AI工具演示 -->
+                <div class="bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-4">AI产品需求助手演示</h3>
+                    
+                    <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <span class="font-medium">用户</span>
+                        </div>
+                        <p class="text-gray-700">
+                            请帮我生成一个跨境电商平台的产品需求文档大纲，重点关注用户体验和支付流程优化。
+                        </p>
+                    </div>
+                    
+                    <div class="bg-primary/5 p-4 rounded-lg mb-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2">
+                                <i class="fa fa-robot"></i>
+                            </div>
+                            <span class="font-medium">AI助手</span>
+                        </div>
+                        <div class="text-gray-700">
+                            <p class="mb-2"><strong>跨境电商平台产品需求文档大纲：</strong></p>
+                            <ol class="list-decimal list-inside space-y-1">
+                                <li>项目概述</li>
+                                <li>用户画像与需求分析</li>
+                                <li>核心功能模块</li>
+                                <li>用户体验设计</li>
+                                <li>支付流程优化</li>
+                                <li>技术实现方案</li>
+                                <li>项目时间线</li>
+                            </ol>
+                            <p class="mt-2">需要我详细展开某个部分吗？</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="ai-input" class="block text-gray-700 font-medium mb-2">输入你的需求：</label>
+                        <textarea id="ai-input" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="例如：帮我生成一个社交媒体应用的用户增长策略..."></textarea>
+                    </div>
+                    
+                    <button class="btn-primary w-full" id="generate-ai-response">
+                        <i class="fa fa-magic mr-2"></i> 生成AI响应
+                    </button>
+                    
+                    <div id="ai-response" class="mt-4 hidden">
+                        <div class="bg-primary/5 p-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2">
+                                    <i class="fa fa-robot"></i>
+                                </div>
+                                <span class="font-medium">AI助手</span>
+                            </div>
+                            <div id="ai-response-content" class="text-gray-700">
+                                <!-- AI响应内容将在这里显示 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI工具效益分析 -->
+            <div class="mt-12 bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <i class="fa fa-line-chart text-secondary mr-2"></i>
+                    AI工具效益分析
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-4">效率提升</h4>
+                        <canvas id="efficiency-chart" width="400" height="300"></canvas>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold mb-4">业务价值</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                                    <i class="fa fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">产品需求文档生成时间缩短70%</h5>
+                                    <p class="text-gray-600">从传统的3-5天缩短至1天内完成初稿</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start">
+                                <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                                    <i class="fa fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">需求质量提升40%</h5>
+                                    <p class="text-gray-600">减少需求变更和返工，提高团队协作效率</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start">
+                                <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                                    <i class="fa fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">决策支持能力提升50%</h5>
+                                    <p class="text-gray-600">基于AI分析的市场洞察和竞品分析，提高决策准确性</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start">
+                                <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                                    <i class="fa fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">产品迭代周期缩短30%</h5>
+                                    <p class="text-gray-600">加速从需求到上线的全流程，提高产品竞争力</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系我 -->
+    <section class="section-padding bg-gray-100" id="contact">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">联系我</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    如果您对我的经历和能力感兴趣，或者想了解更多关于我项目的详情，请随时与我联系。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 联系信息 -->
+                <div class="bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-6">联系信息</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i class="fa fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">邮箱</h4>
+                                <p class="text-gray-600">liming@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i class="fa fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">电话</h4>
+                                <p class="text-gray-600">+86 138 **** 5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i class="fa fa-map-marker text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">地点</h4>
+                                <p class="text-gray-600">北京市海淀区</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i class="fa fa-linkedin text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">LinkedIn</h4>
+                                <p class="text-gray-600">linkedin.com/in/liming</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-4">社交媒体</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon">
+                                <i class="fa fa-weixin"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 联系表单 -->
+                <div class="bg-white p-6 rounded-lg shadow-custom" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-6">发送消息</h3>
+                    
+                    <form id="contact-form">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="您的姓名">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="您的邮箱">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">主题</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="消息主题">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">消息</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="请输入您的消息"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full">
+                            <i class="fa fa-paper-plane mr-2"></i> 发送消息
+                        </button>
+                    </form>
+                    
+                    <div id="form-success" class="mt-4 hidden">
+                        <div class="bg-green-100 text-green-700 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fa fa-check-circle text-green-500 mr-2"></i>
+                                <span>消息已成功发送！我会尽快回复您。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold">李明<span class="text-secondary">.PM</span></h3>
+                    <p class="text-gray-400 mt-2">产品经理候选人 | 商业闭环专家 | AI效率提升达人</p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-all-300">
+                        <i class="fa fa-weixin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all-300">
+                        <i class="fa fa-weibo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all-300">
+                        <i class="fa fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all-300">
+                        <i class="fa fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <hr class="border-gray-800 my-6">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    © 2025 李明. 保留所有权利.
+                </p>
+                
+                <div class="flex space-x-6">
+                    <a href="#about" class="text-gray-400 hover:text-white transition-all-300 text-sm">关于我</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition-all-300 text-sm">技能</a>
+                    <a href="#portfolio" class="text-gray-400 hover:text-white transition-all-300 text-sm">作品集</a>
+                    <a href="#ai-project" class="text-gray-400 hover:text-white transition-all-300 text-sm">AI项目</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition-all-300 text-sm">联系我</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 项目详情模态框 -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" id="project-modal">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold" id="modal-title">项目标题</h3>
+                    <button class="text-gray-500 hover:text-gray-700 focus:outline-none" id="close-modal">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div id="modal-content">
+                    <!-- 项目详情内容将在这里显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 初始化AOS动画库
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // 导航栏滚动效果
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('py-2', 'shadow-md');
+                    navbar.classList.remove('py-3');
+                } else {
+                    navbar.classList.add('py-3');
+                    navbar.classList.remove('py-2', 'shadow-md');
+                }
+            });
+            
+            // 移动端菜单
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('overlay');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                overlay.classList.remove('hidden');
+            });
+            
+            closeMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.add('hidden');
+            });
+            
+            overlay.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.add('hidden');
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 关闭移动端菜单
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.add('hidden');
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 作品集筛选
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-primary', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    
+                    // 添加当前按钮的active类
+                    this.classList.add('active', 'bg-primary', 'text-white');
+                    this.classList.remove('bg-gray-200', 'text-gray-700');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // 筛选项目卡片
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // 项目详情模态框
+            const projectButtons = document.querySelectorAll('.view-project');
+            const projectModal = document.getElementById('project-modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            
+            // 项目详情数据
+            const projectDetails = {
+                1: {
+                    title: "自媒体账号运营",
+                    content: `
+                        <div class="mb-6">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9f3e9b205293441a960ef94d80d420e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260212224855380ECAE24EBCD838AB5C&rrcfp=f06b921b&x-expires=1773499758&x-signature=h9cXGqVj04gk4ic946gIMdQ8JmQ%3D" alt="自媒体运营" class="w-full h-64 object-cover rounded-lg mb-4">
+                            <p class="text-gray-600 mb-4">
+                                从零开始打造个人自媒体账号，专注于产品经理和AI工具应用领域的内容创作。通过深入了解目标受众需求，制定内容策略，实现了1.5万粉丝的快速增长。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                成功创造多篇爆款内容，单篇最高获得10万+阅读量和5000+互动，建立了个人品牌影响力。通过数据分析持续优化内容策略，提高用户 engagement 和留存率。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">项目成果：</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>粉丝增长：从0到1.5万，月均增长率20%</li>
+                                <li>内容表现：多篇爆款内容，平均阅读量2万+</li>
+                                <li>用户互动：平均互动率8%，高于行业平均水平</li>
+                                <li>品牌合作：成功与3家企业建立内容合作关系</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">关键技能应用：</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">内容策略</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">数据分析</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">用户洞察</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">品牌建设</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">社媒运营</span>
+                            </div>
+                        </div>
+                    `
+                },
+                2: {
+                    title: "跨境电商产品规划",
+                    content: `
+                        <div class="mb-6">
+                            <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/a96240b9000d4b848ea82835772b7769~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260212224855380ECAE24EBCD838AB5C&rrcfp=f06b921b&x-expires=1773499755&x-signature=xLeLACZ7fk%2B%2F2xtnY%2BsMui79qUo%3D" alt="产品设计" class="w-full h-64 object-cover rounded-lg mb-4">
+                            <p class="text-gray-600 mb-4">
+                                参与跨境电商平台的产品规划与设计，负责用户调研、需求分析和功能设计，推动产品从0到1的全过程。重点关注用户体验优化和支付流程简化，提高转化率和用户满意度。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                通过用户访谈和数据分析，识别关键痛点并提出解决方案，成功优化了 checkout 流程，将购物车放弃率降低了25%。同时，设计了新的用户推荐系统，提高了客单价和复购率。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">项目成果：</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>购物车放弃率：降低25%</li>
+                                <li>转化率：提升15%</li>
+                                <li>客单价：增加10%</li>
+                                <li>用户满意度：提升20%</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">关键技能应用：</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">用户研究</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">需求分析</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">流程优化</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">数据分析</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">产品设计</span>
+                            </div>
+                        </div>
+                    `
+                },
+                3: {
+                    title: "AI辅助内容创作工具",
+                    content: `
+                        <div class="mb-6">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/80b71cf194fe44e6ab823c09836f90cc~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260212224855380ECAE24EBCD838AB5C&rrcfp=f06b921b&x-expires=1773499755&x-signature=xARoe3wrT1Y9ABukxZyRcI0EcrA%3D" alt="AI应用" class="w-full h-64 object-cover rounded-lg mb-4">
+                            <p class="text-gray-600 mb-4">
+                                开发并应用AI辅助内容创作工具，结合自然语言处理技术，帮助内容创作者提高生产效率。工具能够生成内容大纲、优化标题、提供写作建议，并进行语法和风格检查。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                通过集成多种AI模型，实现了内容创作全流程的智能化辅助，同时保持内容的原创性和个性化。工具上线后，内容生产效率提高了30%，同时内容质量和一致性也得到了提升。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">项目成果：</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>内容生产效率：提升30%</li>
+                                <li>内容质量评分：提高15%</li>
+                                <li>用户满意度：90%的用户表示会继续使用</li>
+                                <li>应用场景：成功应用于博客、社交媒体和营销内容创作</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">关键技能应用：</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">AI模型集成</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">自然语言处理</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">产品设计</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">用户体验</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">内容策略</span>
+                            </div>
+                        </div>
+                    `
+                },
+                4: {
+                    title: "爆款内容策划",
+                    content: `
+                        <div class="mb-6">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9f3e9b205293441a960ef94d80d420e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260212224855380ECAE24EBCD838AB5C&rrcfp=f06b921b&x-expires=1773499758&x-signature=h9cXGqVj04gk4ic946gIMdQ8JmQ%3D" alt="社媒爆款" class="w-full h-64 object-cover rounded-lg mb-4">
+                            <p class="text-gray-600 mb-4">
+                                策划并执行多篇爆款内容，通过深入研究目标受众兴趣和平台算法，创造出高互动率的内容。单篇内容最高获得10万+阅读量和5000+互动，成功打造个人品牌影响力。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                通过A/B测试和数据分析，不断优化内容策略和发布时间，提高内容触达率和互动率。建立了系统化的内容创作流程，确保内容质量和一致性。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">项目成果：</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>最高阅读量：10万+</li>
+                                <li>最高互动量：5000+</li>
+                                <li>内容传播率：平均分享率5%</li>
+                                <li>粉丝增长率：爆款内容发布后粉丝增长30%</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">关键技能应用：</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">内容策划</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">数据分析</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">A/B测试</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">用户洞察</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">算法优化</span>
+                            </div>
+                        </div>
+                    `
+                },
+                5: {
+                    title: "用户研究与洞察报告",
+                    content: `
+                        <div class="mb-6">
+                            <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/a96240b9000d4b848ea82835772b7769~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260212224855380ECAE24EBCD838AB5C&rrcfp=f06b921b&x-expires=1773499755&x-signature=xLeLACZ7fk%2B%2F2xtnY%2BsMui79qUo%3D" alt="用户研究" class="w-full h-64 object-cover rounded-lg mb-4">
+                            <p class="text-gray-600 mb-4">
+                                主导跨国用户研究项目，覆盖亚洲、欧洲和北美地区的用户，通过问卷调查、深度访谈和数据分析，产出详细的用户洞察报告。研究聚焦于用户行为、需求和痛点，为产品决策提供依据。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                通过定性和定量研究方法相结合，识别出关键用户群体和使用场景，并提出针对性的产品优化建议。研究结果直接影响了产品路线图和功能优先级排序。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">项目成果：</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>调研样本：覆盖3个大洲，5个国家，共1000+用户</li>
+                                <li>洞察发现：识别出15个关键用户痛点和机会点</li>
+                                <li>产品影响：直接影响3个核心功能的设计和优化</li>
+                                <li>决策支持：为产品路线图提供了数据支持</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">关键技能应用：</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">用户研究</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">数据分析</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">问卷设计</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">深度访谈</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">洞察提炼</span>
+                            </div>
+                        </div>
+                    `
+                },
+                6: {
+                    title: "AI效率提升工作流",
+                    content: `
+                        <div class="mb-6">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/80b71cf194fe44e6ab823c09836f90cc~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260212224855380ECAE24EBCD838AB5C&rrcfp=f06b921b&x-expires=1773499755&x-signature=xARoe3wrT1Y9ABukxZyRcI0EcrA%3D" alt="AI效率工具" class="w-full h-64 object-cover rounded-lg mb-4">
+                            <p class="text-gray-600 mb-4">
+                                设计并实施AI辅助工作流，将日常工作效率提升40%。通过集成多种AI工具和自动化脚本，实现了数据分析、报告生成、会议记录和邮件管理等任务的智能化处理。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                工作流包括数据自动收集和分析、报告模板生成、会议内容总结和行动项跟踪等功能，大幅减少了重复性工作，提高了团队协作效率和决策速度。
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">项目成果：</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>工作效率：整体提升40%</li>
+                                <li>报告生成时间：从4小时缩短至30分钟</li>
+                                <li>会议效率：会议记录时间减少70%</li>
+                                <li>数据处理：分析效率提升60%</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">关键技能应用：</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">AI工具集成</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">工作流设计</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">自动化脚本</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">数据分析</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">效率优化</span>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+            
+            projectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-id');
+                    const project = projectDetails[projectId];
+                    
+                    modalTitle.textContent = project.title;
+                    modalContent.innerHTML = project.content;
+                    
+                    projectModal.classList.remove('hidden');
+                    overlay.classList.remove('hidden');
+                });
+            });
+            
+            closeModal.addEventListener('click', function() {
+                projectModal.classList.add('hidden');
+                overlay.classList.add('hidden');
+            });
+            
+            overlay.addEventListener('click', function() {
+                projectModal.classList.add('hidden');
+                overlay.classList.add('hidden');
+            });
+            
+            // AI工具演示
+            const generateAiButton = document.getElementById('generate-ai-response');
+            const aiInput = document.getElementById('ai-input');
+            const aiResponse = document.getElementById('ai-response');
+            const aiResponseContent = document.getElementById('ai-response-content');
+            
+            generateAiButton.addEventListener('click', function() {
+                const inputText = aiInput.value.trim();
+                
+                if (inputText) {
+                    // 显示加载状态
+                    generateAiButton.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 生成中...';
+                    generateAiButton.disabled = true;
+                    
+                    // 模拟AI响应延迟
+                    setTimeout(function() {
+                        // 根据输入内容生成相应的AI响应
+                        let response = '';
+                        
+                        if (inputText.includes('社交媒体') || inputText.includes('社媒') || inputText.includes('用户增长')) {
+                            response = `
+                                <p class="mb-2"><strong>社交媒体应用用户增长策略：</strong></p>
+                                <ol class="list-decimal list-inside space-y-1 mb-3">
+                                    <li>内容策略优化：创建高质量、高互动性的内容</li>
+                                    <li>用户获取渠道：社交媒体广告、KOL合作、SEO优化</li>
+                                    <li>用户留存机制：个性化推荐、社区建设、激励体系</li>
+                                    <li>病毒式传播：设计分享机制和社交奖励</li>
+                                    <li>数据分析：持续监测和优化用户旅程</li>
+                                </ol>
+                                <p>建议优先实施内容策略优化和用户留存机制，这两项对初期用户增长最为关键。</p>
+                            `;
+                        } else if (inputText.includes('电商') || inputText.includes('购物')) {
+                            response = `
+                                <p class="mb-2"><strong>电商平台用户体验优化方案：</strong></p>
+                                <ol class="list-decimal list-inside space-y-1 mb-3">
+                                    <li>首页个性化：基于用户行为和偏好的动态内容展示</li>
+                                    <li>搜索优化：智能搜索算法和自动补全功能</li>
+                                    <li>结账流程简化：减少步骤，支持多种支付方式</li>
+                                    <li>产品展示改进：高质量图片、视频和详细描述</li>
+                                    <li>客户服务增强：AI聊天机器人和实时支持</li>
+                                </ol>
+                                <p>建议从结账流程简化开始，这通常是提升转化率的最快途径。</p>
+                            `;
+                        } else if (inputText.includes('教育') || inputText.includes('学习')) {
+                            response = `
+                                <p class="mb-2"><strong>在线教育平台产品需求：</strong></p>
+                                <ol class="list-decimal list-inside space-y-1 mb-3">
+                                    <li>个性化学习路径：基于用户目标和进度的定制化内容</li>
+                                    <li>互动学习体验：直播课程、小组讨论、实践项目</li>
+                                    <li>进度追踪：详细的学习数据分析和可视化报告</li>
+                                    <li>社区建设：学习者交流、导师指导、 peer review</li>
+                                    <li>认证体系：完成课程后的证书和技能评估</li>
+                                </ol>
+                                <p>核心功能应优先实现个性化学习路径和进度追踪，这是在线教育平台的核心价值。</p>
+                            `;
+                        } else {
+                            response = `
+                                <p class="mb-2"><strong>产品需求分析与建议：</strong></p>
+                                <p class="mb-3">根据您提供的信息，我建议从以下几个方面考虑产品需求：</p>
+                                <ol class="list-decimal list-inside space-y-1 mb-3">
+                                    <li>用户需求调研：深入了解目标用户的痛点和期望</li>
+                                    <li>竞品分析：研究市场上类似产品的优缺点</li>
+                                    <li>核心功能定义：确定MVP（最小可行产品）的功能范围</li>
+                                    <li>用户体验设计：优化交互流程和界面设计</li>
+                                    <li>数据指标规划：设定关键绩效指标（KPI）</li>
+                                </ol>
+                                <p>建议先进行用户需求调研，这将为后续的产品决策提供基础。</p>
+                            `;
+                        }
+                        
+                        // 显示AI响应
+                        aiResponseContent.innerHTML = response;
+                        aiResponse.classList.remove('hidden');
+                        
+                        // 恢复按钮状态
+                        generateAiButton.innerHTML = '<i class="fa fa-magic mr-2"></i> 生成AI响应';
+                        generateAiButton.disabled = false;
+                    }, 1500);
+                } else {
+                    alert('请输入您的需求');
+                }
+            });
+            
+            // 联系表单提交
+            const contactForm = document.getElementById('contact-form');
+            const formSuccess = document.getElementById('form-success');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 获取表单数据
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // 简单验证
+                if (name && email && subject && message) {
+                    // 模拟表单提交
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    submitButton.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 发送中...';
+                    submitButton.disabled = true;
+                    
+                    setTimeout(function() {
+                        // 显示成功消息
+                        formSuccess.classList.remove('hidden');
+                        
+                        // 重置表单
+                        contactForm.reset();
+                        
+                        // 恢复按钮状态
+                        submitButton.innerHTML = '<i class="fa fa-paper-plane mr-2"></i> 发送消息';
+                        submitButton.disabled = false;
+                        
+                        // 5秒后隐藏成功消息
+                        setTimeout(function() {
+                            formSuccess.classList.add('hidden');
+                        }, 5000);
+                    }, 1500);
+                } else {
+                    alert('请填写所有必填字段');
+                }
+            });
+            
+            // 效率图表
+            const ctx = document.getElementById('efficiency-chart').getContext('2d');
+            const efficiencyChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['需求文档生成', '数据分析', '会议管理', '内容创作', '整体效率'],
+                    datasets: [{
+                        label: '效率提升百分比',
+                        data: [70, 60, 70, 30, 40],
+                        backgroundColor: [
+                            'rgba(0, 86, 179, 0.7)',
+                            'rgba(0, 86, 179, 0.7)',
+                            'rgba(0, 86, 179, 0.7)',
+                            'rgba(0, 86, 179, 0.7)',
+                            'rgba(255, 122, 0, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 86, 179, 1)',
+                            'rgba(0, 86, 179, 1)',
+                            'rgba(0, 86, 179, 1)',
+                            'rgba(0, 86, 179, 1)',
+                            'rgba(255, 122, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '效率提升: ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 语言切换功能
+            const languageOptions = document.querySelectorAll('.language-option');
+            const currentLanguageDisplay = document.getElementById('current-language');
+            
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // 更新当前语言显示
+                    currentLanguageDisplay.textContent = selectedLang === 'zh' ? '中文' : 'English';
+                    currentLanguageDisplay.setAttribute('data-lang', selectedLang);
+                    
+                    // 显示对应语言的内容
+                    document.querySelectorAll('[data-lang]').forEach(element => {
+                        if (element.getAttribute('data-lang') === selectedLang) {
+                            element.classList.remove('hidden');
+                        } else {
+                            element.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+            
+            // 导航链接高亮
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body></html>
