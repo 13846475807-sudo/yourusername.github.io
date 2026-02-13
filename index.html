@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#333333',
+                        secondary: '#666666',
+                        accent: '#999999',
+                        light: '#f8f5f0',
+                        dark: '#333333',
+                        gray: {
+                            100: '#f8f5f0',
+                            200: '#efe9e0',
+                            300: '#e5ddd0',
+                            400: '#d9cebc',
+                            500: '#c4b5a0',
+                            600: '#9e8d78',
+                            700: '#7d6b57',
+                            800: '#5c4e3f',
+                            900: '#3b3228'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        'hover': '0 10px 30px rgba(0, 0, 0, 0.15)'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-in-out',
+                        'slide-down': 'slideDown 0.5s ease-in-out',
+                        'slide-left': 'slideLeft 0.5s ease-in-out',
+                        'slide-right': 'slideRight 0.5s ease-in-out',
+                        'pulse-slow': 'pulse 3s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+            .section-padding {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+            .nav-link {
+                position: relative;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 1px;
+                bottom: -4px;
+                left: 0;
+                background-color: #333333;
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+            .btn-primary {
+                background-color: transparent;
+                color: #333333;
+                padding: 0.75rem 1.5rem;
+                border: 1px solid #333333;
+                border-radius: 0;
+                font-weight: 400;
+                transition: all 0.3s ease;
+                letter-spacing: 1px;
+            }
+            .btn-primary:hover {
+                background-color: #333333;
+                color: #f8f5f0;
+                transform: translateY(-2px);
+            }
+            .btn-secondary {
+                background-color: #333333;
+                color: #f8f5f0;
+                padding: 0.75rem 1.5rem;
+                border: 1px solid #333333;
+                border-radius: 0;
+                font-weight: 400;
+                transition: all 0.3s ease;
+                letter-spacing: 1px;
+            }
+            .btn-secondary:hover {
+                background-color: transparent;
+                color: #333333;
+                transform: translateY(-2px);
+            }
+            .progress-bar {
+                height: 4px;
+                background-color: #e5ddd0;
+                overflow: hidden;
+            }
+            .progress-bar-fill {
+                height: 100%;
+                background-color: #333333;
+                transition: width 1s ease-in-out;
+            }
+            .timeline-item {
+                position: relative;
+                padding-left: 30px;
+                margin-bottom: 2rem;
+            }
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 1px;
+                background-color: #333333;
+            }
+            .timeline-item::after {
+                content: '';
+                position: absolute;
+                left: -3px;
+                top: 0;
+                height: 7px;
+                width: 7px;
+                border-radius: 50%;
+                background-color: #333333;
+            }
+            .project-card {
+                border: 1px solid #e5ddd0;
+                border-radius: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                background: #f8f5f0;
+            }
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            .project-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                transition: all 0.3s ease;
+                filter: grayscale(30%);
+            }
+            .project-card:hover img {
+                filter: grayscale(0%);
+            }
+            .ai-tool-card {
+                border: 1px solid #e5ddd0;
+                border-radius: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                background: #f8f5f0;
+            }
+            .ai-tool-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            .social-icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border: 1px solid #333333;
+                border-radius: 0;
+                background-color: transparent;
+                color: #333333;
+                margin-right: 10px;
+                transition: all 0.3s ease;
+            }
+            .social-icon:hover {
+                background-color: #333333;
+                color: #f8f5f0;
+                transform: translateY(-2px);
+            }
+            .mobile-menu {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+            .border-l-custom {
+                border-left: 1px solid #e5ddd0;
+            }
+            .border-r-custom {
+                border-right: 1px solid #e5ddd0;
+            }
+            .border-t-custom {
+                border-top: 1px solid #e5ddd0;
+            }
+            .border-b-custom {
+                border-bottom: 1px solid #e5ddd0;
+            }
+            .language-selector {
+                position: relative;
+                cursor: pointer;
+            }
+            .language-dropdown {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #f8f5f0;
+                border: 1px solid #e5ddd0;
+                padding: 0.5rem 0;
+                min-width: 80px;
+                z-index: 100;
+                display: none;
+            }
+            .language-selector:hover .language-dropdown {
+                display: block;
+            }
+            .language-option {
+                padding: 0.5rem 1rem;
+                transition: all 0.2s ease;
+            }
+            .language-option:hover {
+                background: #e5ddd0;
+            }
+            @media (max-width: 768px) {
+                .section-padding {
+                    padding-top: 3rem;
+                    padding-bottom: 3rem;
+                }
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-primary font-sans">
+    <!-- 导航栏（包含语言切换按钮） -->
+    <header class="fixed w-full bg-light/90 backdrop-blur-sm z-50 border-b-custom">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo/网站名称 -->
+            <a href="#" class="text-2xl font-display font-bold" id="site-title">My Portfolio</a>
+            
+            <!-- 桌面端导航 + 语言切换 -->
+            <div class="hidden md:flex items-center gap-8">
+                <nav class="flex gap-6">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- 语言切换按钮（核心：包含中文/English） -->
+                <div class="language-selector">
+                    <span id="current-language">English</span>
+                    <div class="language-dropdown">
+                        <div class="language-option" onclick="switchLanguage('en')">English</div>
+                        <div class="language-option" onclick="switchLanguage('zh')">中文</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 移动端菜单按钮 -->
+            <button class="md:hidden" id="mobile-menu-btn">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- 移动端菜单 -->
+        <div class="mobile-menu md:hidden absolute top-full left-0 w-full bg-light border-b-custom" id="mobile-menu">
+            <nav class="container mx-auto px-4 py-4 flex flex-col gap-4">
+                <a href="#home" class="py-2">Home</a>
+                <a href="#about" class="py-2">About</a>
+                <a href="#projects" class="py-2">Projects</a>
+                <a href="#contact" class="py-2">Contact</a>
+                
+                <!-- 移动端语言切换 -->
+                <div class="pt-2 border-t-custom">
+                    <div class="language-selector w-fit">
+                        <span id="mobile-current-language">English</span>
+                        <div class="language-dropdown">
+                            <div class="language-option" onclick="switchLanguage('en')">English</div>
+                            <div class="language-option" onclick="switchLanguage('zh')">中文</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页 Hero 区域 -->
+    <section id="home" class="min-h-screen flex items-center pt-20 section-padding">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="slide-right">
+                    <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-display font-bold mb-6" id="hero-title">
+                        Hi, I'm a Developer
+                    </h1>
+                    <p class="text-secondary text-lg mb-8" id="hero-desc">
+                        Specializing in web development, UI/UX design and AI integration.
+                    </p>
+                    <a href="#projects" class="btn-primary inline-block" id="hero-btn">View My Work</a>
+                </div>
+                <div data-aos="slide-left" class="flex justify-center">
+                    <div class="w-full max-w-md aspect-square bg-gray-200 flex items-center justify-center">
+                        <i class="fa fa-code text-8xl text-primary/50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About 区域 -->
+    <section id="about" class="bg-gray-100 section-padding">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-display font-bold mb-12 text-center" id="about-title">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div data-aos="slide-up">
+                    <p class="text-secondary mb-6" id="about-desc">
+                        I have over 5 years of experience in web development, with expertise in front-end technologies like HTML, CSS, JavaScript, React, and Tailwind CSS. I'm passionate about creating responsive, user-friendly, and visually appealing websites.
+                    </p>
+                    <div class="mt-8">
+                        <h3 class="font-display font-bold mb-4" id="skills-title">Skills</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>HTML/CSS</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>JavaScript</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Tailwind CSS</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="slide-up" class="flex justify-center items-center">
+                    <div class="w-full max-w-md aspect-square bg-gray-200 flex items-center justify-center">
+                        <i class="fa fa-user text-8xl text-primary/50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects 区域 -->
+    <section id="projects" class="section-padding">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-display font-bold mb-12 text-center" id="projects-title">My Projects</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 项目卡片 1 -->
+                <div class="project-card p-6" data-aos="fade-in">
+                    <div class="bg-gray-200 h-48 mb-4 flex items-center justify-center">
+                        <i class="fa fa-laptop text-6xl text-primary/50"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-2" id="proj1-title">Portfolio Website</h3>
+                    <p class="text-secondary mb-4" id="proj1-desc">A responsive personal portfolio website built with Tailwind CSS.</p>
+                    <a href="#" class="text-primary hover:underline" id="proj1-link">View Project</a>
+                </div>
+                <!-- 项目卡片 2 -->
+                <div class="project-card p-6" data-aos="fade-in" data-aos-delay="100">
+                    <div class="bg-gray-200 h-48 mb-4 flex items-center justify-center">
+                        <i class="fa fa-shopping-cart text-6xl text-primary/50"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-2" id="proj2-title">E-commerce Site</h3>
+                    <p class="text-secondary mb-4" id="proj2-desc">A fully functional e-commerce website with cart functionality.</p>
+                    <a href="#" class="text-primary hover:underline" id="proj2-link">View Project</a>
+                </div>
+                <!-- 项目卡片 3 -->
+                <div class="project-card p-6" data-aos="fade-in" data-aos-delay="200">
+                    <div class="bg-gray-200 h-48 mb-4 flex items-center justify-center">
+                        <i class="fa fa-chart-bar text-6xl text-primary/50"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-2" id="proj3-title">Dashboard App</h3>
+                    <p class="text-secondary mb-4" id="proj3-desc">A data visualization dashboard using Chart.js.</p>
+                    <a href="#" class="text-primary hover:underline" id="proj3-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact 区域 -->
+    <section id="contact" class="bg-gray-100 section-padding">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-display font-bold mb-12 text-center" id="contact-title">Contact Me</h2>
+            <div class="max-w-2xl mx-auto">
+                <form data-aos="slide-up" class="space-y-6">
+                    <div>
+                        <label for="name" class="block mb-2" id="name-label">Name</label>
+                        <input type="text" id="name" class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:border-primary transition-all-300" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2" id="email-label">Email</label>
+                        <input type="email" id="email" class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:border-primary transition-all-300" placeholder="Your email">
+                    </div>
+                    <div>
+                        <label for="message" class="block mb-2" id="message-label">Message</label>
+                        <textarea id="message" rows="5" class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:border-primary transition-all-300" placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn-secondary w-full" id="submit-btn">Send Message</button>
+                </form>
+                
+                <div class="mt-12 text-center" data-aos="slide-up">
+                    <h3 class="font-display font-bold mb-4" id="social-title">Connect with me</h3>
+                    <div class="flex justify-center gap-2">
+                        <a href="#" class="social-icon"><i class="fa fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-light py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p id="footer-text">© 2025 My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 语言切换功能
+        const translations = {
+            en: {
+                'site-title': 'My Portfolio',
+                'hero-title': 'Hi, I\'m a Developer',
+                'hero-desc': 'Specializing in web development, UI/UX design and AI integration.',
+                'hero-btn': 'View My Work',
+                'about-title': 'About Me',
+                'about-desc': 'I have over 5 years of experience in web development, with expertise in front-end technologies like HTML, CSS, JavaScript, React, and Tailwind CSS. I\'m passionate about creating responsive, user-friendly, and visually appealing websites.',
+                'skills-title': 'Skills',
+                'projects-title': 'My Projects',
+                'proj1-title': 'Portfolio Website',
+                'proj1-desc': 'A responsive personal portfolio website built with Tailwind CSS.',
+                'proj1-link': 'View Project',
+                'proj2-title': 'E-commerce Site',
+                'proj2-desc': 'A fully functional e-commerce website with cart functionality.',
+                'proj2-link': 'View Project',
+                'proj3-title': 'Dashboard App',
+                'proj3-desc': 'A data visualization dashboard using Chart.js.',
+                'proj3-link': 'View Project',
+                'contact-title': 'Contact Me',
+                'name-label': 'Name',
+                'email-label': 'Email',
+                'message-label': 'Message',
+                'submit-btn': 'Send Message',
+                'social-title': 'Connect with me',
+                'footer-text': '© 2025 My Portfolio. All rights reserved.',
+                'current-language': 'English',
+                'mobile-current-language': 'English'
+            },
+            zh: {
+                'site-title': '我的作品集',
+                'hero-title': '你好，我是一名开发者',
+                'hero-desc': '专注于网页开发、UI/UX 设计和 AI 集成。',
+                'hero-btn': '查看我的作品',
+                'about-title': '关于我',
+                'about-desc': '我拥有超过5年的网页开发经验，精通HTML、CSS、JavaScript、React和Tailwind CSS等前端技术。我热衷于创建响应式、用户友好且视觉美观的网站。',
+                'skills-title': '技能',
+                'projects-title': '我的项目',
+                'proj1-title': '作品集网站',
+                'proj1-desc': '使用Tailwind CSS构建的响应式个人作品集网站。',
+                'proj1-link': '查看项目',
+                'proj2-title': '电商网站',
+                'proj2-desc': '具有购物车功能的全功能电商网站。',
+                'proj2-link': '查看项目',
+                'proj3-title': '仪表盘应用',
+                'proj3-desc': '使用Chart.js实现的数据可视化仪表盘。',
+                'proj3-link': '查看项目',
+                'contact-title': '联系我',
+                'name-label': '姓名',
+                'email-label': '邮箱',
+                'message-label': '留言',
+                'submit-btn': '发送留言',
+                'social-title': '与我联系',
+                'footer-text': '© 2025 我的作品集。保留所有权利。',
+                'current-language': '中文',
+                'mobile-current-language': '中文'
+            }
+        };
+
+        // 切换语言函数
+        function switchLanguage(lang) {
+            // 更新所有翻译文本
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            // 更新页面lang属性
+            document.documentElement.lang = lang;
+        }
+
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+
+        // AOS 动画初始化
+        AOS.init();
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
