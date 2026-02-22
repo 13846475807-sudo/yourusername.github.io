@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程4：用户注册登录 | 王帅</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen p-4 font-sans">
+    <div class="max-w-5xl mx-auto">
+        <a href="index.html" class="text-gray-600 hover:text-gray-900 text-sm">&larr; 返回流程图列表</a>
+        <h1 class="text-xl font-bold text-gray-900 mt-4 mb-2">流程4：用户注册登录</h1>
+        <p class="text-gray-500 text-sm mb-6">泳道：用户 | 前端 | 后端 | 数据库</p>
+        <div class="bg-white rounded-lg p-6 overflow-x-auto">
+            <pre class="mermaid">
+flowchart TB
+  subgraph user["泳道: 用户"]
+    U1([访问首页])
+    U2[点击注册或登录]
+    U3[选择登录方式]
+    U4[输入信息]
+    U5([跳转主页])
+    U1 --> U2 --> U3 --> U4 --> U5
+  end
+  subgraph fe["泳道: 前端"]
+    F1[展示登录方式 邮箱_Google_Apple]
+    F2[提交凭证]
+    F3[跳转主页]
+    F1 --> F2 --> F3
+  end
+  subgraph be["泳道: 后端"]
+    B1[接收凭证]
+    B2{验证成功?}
+    B3[签发会话]
+    B4[返回用户信息]
+    B1 --> B2
+    B2 -->|是| B3 --> B4
+    B2 -->|否| B2N[返回错误]
+  end
+  subgraph db["泳道: 数据库"]
+    D1[(用户账户)]
+  end
+  U2 --> F1
+  U3 --> F1
+  U4 --> F2
+  F2 --> B1
+  B2 --> D1
+  B4 --> F3
+  F3 --> U5
+            </pre>
+        </div>
+    </div>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>

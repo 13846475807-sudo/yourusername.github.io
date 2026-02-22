@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程9：上传失败处理（异常） | 王帅</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen p-4 font-sans">
+    <div class="max-w-5xl mx-auto">
+        <a href="index.html" class="text-gray-600 hover:text-gray-900 text-sm">&larr; 返回流程图列表</a>
+        <h1 class="text-xl font-bold text-gray-900 mt-4 mb-2">流程9：上传失败处理（异常流程）</h1>
+        <p class="text-gray-500 text-sm mb-6">自流程1「上传」进入；处理后可返回流程1重新选择文件。</p>
+        <div class="bg-white rounded-lg p-6 overflow-x-auto">
+            <pre class="mermaid">
+flowchart TB
+  subgraph user["泳道: 用户"]
+    U1[用户上传文件]
+    U2[看到错误提示]
+    U3[重新选择文件]
+    U4([返回正常流程 流程1上传])
+    U1 --> U2 --> U3 --> U4
+  end
+  subgraph fe["泳道: 前端"]
+    F1[接收文件并提交]
+    F2[显示错误提示]
+    F3[保持上传入口可再次选择]
+    F1 --> F2 --> F3
+  end
+  subgraph be["泳道: 后端"]
+    B1[接收上传]
+    B2{系统检测合规?}
+    B3[返回错误码与说明]
+    B1 --> B2
+    B2 -.->|不合规 异常| B3
+    B2 -->|合规| B2OK[继续流程1]
+  end
+  U1 --> F1
+  F1 --> B1
+  B2 --> B3
+  B3 --> F2
+  F2 --> U2
+  U3 --> F3
+  F3 --> U4
+            </pre>
+        </div>
+    </div>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>
